@@ -1,18 +1,22 @@
-FROM node:18.3.0-alpine3.14 AS development
+FROM node:16.14.0-alpine3.14 AS development
 
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+COPY tsconfig.json ./
+COPY tsconfig.build.json ./
 
-RUN npm install glob rimraf
-
-RUN npm install --only=development --silent
+RUN npm install -g npm
+RUN npm install -g @nestjs/cli
+RUN npm install -g rimraf
+RUN npm install -g husky
+RUN npm install
 
 COPY . .
 
 RUN npm run build
 
-FROM node:18.3.0-alpine3.14 as production
+FROM node:16.14.0-alpine3.14 as production
 
 ARG NODE_ENV=production
 ENV NODE_ENV=${NODE_ENV}
@@ -20,13 +24,21 @@ ENV NODE_ENV=${NODE_ENV}
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+COPY tsconfig.json ./
+COPY tsconfig.build.json ./
 
-RUN npm install --only=production --silent
+RUN npm install -g npm
+RUN npm install -g @nestjs/cli
+RUN npm install -g rimraf
+RUN npm install -g husky
+RUN npm install
 
 COPY . .
 
-COPY --from=development /usr/src/app/dist ./dist
+RUN npm run build
 
-EXPOSE 3000
+COPY --from=development /usr/src/app .
 
-CMD ["node", "dist/main"]
+EXPOSE 4000
+
+CMD ["npm", "start"]
