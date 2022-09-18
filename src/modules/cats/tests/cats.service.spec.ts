@@ -1,8 +1,8 @@
 import { Test, TestingModule } from '@nestjs/testing';
 
-import { CatsService } from './cats.service';
+import { CatsService } from '../services/cats.service';
 
-import { CatsServiceMock } from './tests/mocks/cats.service.mock';
+import { CatsServiceMock } from './mocks/cats.service.mock';
 
 describe('CatsService', () => {
     let catsService: CatsService;

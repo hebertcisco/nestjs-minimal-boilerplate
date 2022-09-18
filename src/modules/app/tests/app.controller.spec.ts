@@ -2,20 +2,20 @@ import { Test } from '@nestjs/testing';
 
 import { AppServiceInterface } from 'nest-shared';
 
-import type { INestApplication } from '@nestjs/common';
+import { StatusModule } from '../../status/status.module';
+import { CatsModule } from '../../cats/cats.module';
 
-import { AppController } from './app.controller';
+import { AppController } from '../app.controller';
 
 describe('AppController', () => {
-    let app: INestApplication;
     let appController: AppController;
 
     beforeEach(async () => {
         const moduleRef = await Test.createTestingModule({
+            imports: [CatsModule, StatusModule],
             controllers: [AppController],
         }).compile();
         appController = moduleRef.get<AppController>(AppController);
-        await app.init();
     });
 
     describe('status', () => {
