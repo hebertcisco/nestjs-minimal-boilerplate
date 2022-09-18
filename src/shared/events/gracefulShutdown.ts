@@ -8,7 +8,6 @@ export function gracefulShutdown(server: Server, code: string) {
         logger.log('Closing http server...');
         server.close(() => {
             logger.log('Http server closed.');
-            logger.log('Closed MongoDB connection...');
             process.exit(0);
         });
     };
