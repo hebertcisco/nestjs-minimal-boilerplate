@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get, HttpCode } from '@nestjs/common';
 import { ApiHeader } from '@nestjs/swagger';
 
-import { CatsService } from './cats.service';
+import { CatsService } from './services/cats.service';
 import { CreateCatDto } from './dto/create-cat.dto';
 
 @ApiHeader({

@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 
 import { CatsController } from './cats.controller';
-import { CatsService } from './cats.service';
-import { CatsServiceMock } from '@modules/cats/tests/mocks/cats.service.mock';
+import { CatsService } from './services/cats.service';
+import { CatsServiceMock } from './tests/mocks/cats.service.mock';
 
-import { configService } from '@config/application.config';
+import { configService } from '../../config/application.config';
 
 @Module({
     controllers: [CatsController],

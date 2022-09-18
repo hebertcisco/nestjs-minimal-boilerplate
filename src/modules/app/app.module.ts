@@ -6,10 +6,10 @@ import {
 } from '@nestjs/common';
 
 import { CatsModule } from '@modules/cats/cats.module';
+import { StatusModule } from '@modules/status/status.module';
 
 import { AppController } from './app.controller';
 import { RolesMiddleware } from '@infra/auth/roles.middleware';
-import { StatusModule } from '@modules/status/status.module';
 
 @Module({
     imports: [CatsModule, StatusModule],

@@ -2,7 +2,7 @@ import { Controller, Get, HttpCode, Res } from '@nestjs/common';
 
 import type { Response } from 'express';
 
-import { StatusService } from '@modules/status/status.service';
+import { StatusService } from '../status/status.service';
 
 @Controller()
 export class AppController {

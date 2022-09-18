@@ -1,6 +1,7 @@
-import { StatusEnum } from '@modules/status/status.enum';
 import { Injectable } from '@nestjs/common';
 import type { AppServiceInterface } from 'nest-shared';
+
+import { StatusEnum } from './status.enum';
 
 @Injectable()
 export class StatusService {

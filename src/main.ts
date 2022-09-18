@@ -15,7 +15,7 @@ import morgan from 'morgan';
 
 import type { INestApplication } from '@nestjs/common';
 
-import { AppModule } from './app.module';
+import { AppModule } from '@modules/app/app.module';
 import { StatusService } from '@modules/status/status.service';
 
 import { configService } from '@config/application.config';
