@@ -1,21 +1,12 @@
-import {
-    Controller,
-    Get,
-    HttpCode,
-    Res,
-    UseInterceptors,
-} from '@nestjs/common';
-
-import { CacheInterceptor } from '@nestjs/common';
+import { Controller, Get, HttpCode, Res } from '@nestjs/common';
 
 import type { Response } from 'express';
 
-import { AppService } from './app.service';
+import { StatusService } from '@modules/status/status.service';
 
 @Controller()
-@UseInterceptors(CacheInterceptor)
 export class AppController {
-    constructor(private readonly appService: AppService) {}
+    constructor(private readonly statusService: StatusService) {}
 
     @Get('/')
     @HttpCode(302)
@@ -24,7 +15,7 @@ export class AppController {
     }
     @Get('/status')
     @HttpCode(200)
-    info() {
-        return this.appService.info();
+    status() {
+        return this.statusService.show();
     }
 }
