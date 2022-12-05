@@ -29,7 +29,7 @@
         "postversion": "git push && git push --tags"
     },
     "dependencies": {
-        "@nestjs/common": "9.0.11",
+        "@nestjs/common": "9.2.1",
         "@nestjs/core": "9.0.11",
         "@nestjs/mapped-types": "*",
         "@nestjs/platform-express": "9.0.11",
